@@ -9,17 +9,35 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var colorizerView: ColorizerView!
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var colorizerSwitch: UISwitch!
+    @IBOutlet weak var colorizerLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        colorizerView.isCircular = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        if colorizerView.isAnimating {
+            button.setTitle("Animate", for: .normal)
+            colorizerView.stopAnimating()
+        } else {
+            button.setTitle("Stop", for: .normal)
+            colorizerView.startAnimating()
+        }
     }
-
-
+    
+    @IBAction func colorizerViewSwitchToggled(_ sender: UISwitch) {
+        if sender.isOn {
+            colorizerView.isCircular = true
+            colorizerLabel.text = "Whole View"
+        } else {
+            colorizerView.isCircular = false
+            colorizerLabel.text = "Flat View"
+        }
+    }
 }
 

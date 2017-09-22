@@ -20,7 +20,7 @@ extension UIColor {
     }
 }
 
-class Colorizer: UIView {
+class ColorizerView: UIView {
     var colors = [
         UIColor(0xee1c27), UIColor(0xbc0271), UIColor(0x612d92), UIColor(0x283897),
         UIColor(0x016db8), UIColor(0x02a2b8), UIColor(0x00a666), UIColor(0xa7d04e),
@@ -50,7 +50,7 @@ class Colorizer: UIView {
     
     func startAnimating() {
         isAnimating = true
-        displayLink = UIScreen.main.displayLink(withTarget: self, selector: #selector(Colorizer.animateBalls))
+        displayLink = UIScreen.main.displayLink(withTarget: self, selector: #selector(ColorizerView.animateBalls))
         displayLink?.add(to: .current, forMode: .defaultRunLoopMode)
     }
     
